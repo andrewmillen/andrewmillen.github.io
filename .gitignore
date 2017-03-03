@@ -1,0 +1,3 @@
+#ignore these files
+_versions/
+.DS_Store

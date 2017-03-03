@@ -1,0 +1,54 @@
+body {
+	font-family: $sans, sans-serif;
+	font-size: 100%;
+	overflow-x: hidden;
+	position: relative;
+}
+
+header {
+	text-align: center;
+	height: 70vh;
+	position: relative;
+	.container {
+		position: relative;
+		top: calc(50%);
+		transform: translateY(-50%);
+		max-width: 800px;
+		margin: 0 auto;
+		padding: 0 2em;
+	}
+}
+
+footer {
+	padding: 10vw;
+	@include breakpoint(small) {
+		text-align: center;
+		.home & {
+			text-align: left;
+		}
+	}
+	ul {
+		margin: 0;
+		padding: 0;
+		list-style: none;
+		li:not(:last-child) {
+			margin-bottom: 1em;
+		}
+		@include breakpoint(small) {
+			li {
+				display: inline-block;
+				&:not(:last-child) {
+					margin-right: 3em;
+				}
+			}
+		}
+	}
+	small {
+		display: block;
+		margin-top: 3em;
+	}
+}
+
+.container {
+	position: relative;
+}

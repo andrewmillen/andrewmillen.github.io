@@ -1,0 +1,30 @@
+$black : #262323;
+$white : #FFFFFF;
+$yellow : #ECFF5A;
+
+$sans : 'brownregular', 'brownbold';
+
+
+// ========================
+//  Breakpoints
+// ========================
+
+$breakpoints: (
+  'small':  480px,
+  'medium': 768px,
+  'large':  992px,
+  'xlarge': 1200px,
+  'xxlarge': 1400px
+) !default;
+
+@mixin breakpoint($breakpoint) {
+  @if map-has-key($breakpoints, $breakpoint) {
+    @media (min-width: map-get($breakpoints, $breakpoint)) {
+      @content;
+    }
+  }
+  @else {
+    @warn "Unfortunately, no value could be retrieved from `#{$breakpoint}`. "
+        + "Available breakpoints are: #{map-keys($breakpoints)}.";
+  }
+}

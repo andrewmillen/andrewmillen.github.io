@@ -1,0 +1,70 @@
+body:not(.error) {
+    animation: fadeIn 1s ease-in-out;
+    animation-delay: 0.5s;
+    animation-fill-mode: both;
+}
+
+@keyframes fadeIn {
+    from { 
+        opacity: 0;
+    }
+    to   { 
+        opacity: 1;
+    }
+}
+
+.home header {
+    animation: makeWay 1.25s cubic-bezier(0.75, 0, 0.25, 1);
+    animation-delay: 2.2s;
+    animation-fill-mode: both;
+}
+
+@keyframes makeWay {
+    from { 
+        height: 100vh;
+        padding-bottom: 20vh;
+    }
+    to { 
+        height: 80vh;
+        padding-bottom: 0;
+    }
+}
+
+.home header {
+    h1, p, .btn {
+        animation: elasticUp 1s cubic-bezier(0.5, 0, 0.5, 1);
+        animation-fill-mode: both;
+        position: relative;
+        top: 15vh;
+    }
+    h1 { animation-delay: 2s; }
+    p { animation-delay: 2.1s; }
+    .btn { animation-delay: 2.15s; }
+}
+
+@keyframes elasticUp {
+    from { 
+        top: 10vh;
+    }
+    to { 
+        top: 0vh;
+    }
+}
+
+.project main img {
+    animation: peekUp 1s cubic-bezier(0.7, 0, 0.3, 1);
+    animation-fill-mode: both;
+    position: relative;
+    animation-delay: 1.5s;
+}
+
+@keyframes peekUp {
+    from { 
+        top: 100px;
+        opacity: 0;
+    }
+    to { 
+        top: 0;
+        opacity: 1;
+    }
+}
