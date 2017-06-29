@@ -55,6 +55,11 @@
 .cover__lowpolymemphis { background: url(../img/covers/lpm.jpg) center center no-repeat; }
 .cover__memphis { background: url(../img/covers/memphis.jpg) center center no-repeat; }
 
+@include breakpoint(large) {
+	.cover__3d { background: url(../img/covers/serenity@2x.jpg) center center no-repeat; }
+	.cover__memphis { background: url(../img/covers/memphis@2x.jpg) center center no-repeat; }
+}
+
 // ================================
 // Project page
 // ================================
