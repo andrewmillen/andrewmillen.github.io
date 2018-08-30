@@ -1,0 +1,53 @@
+// Lists
+// ------------------------
+ul,
+ol {
+    margin: 1rem 0;
+
+    li {
+        margin-bottom: 0.5rem;
+
+        &:last-of-type {
+            margin-bottom: 0;
+        }
+    }
+
+    ol,
+    ul {
+        margin: 0.5rem 0 0.5rem 1.5rem;
+        font-size: 0.9rem;
+    }
+}
+
+ul {
+    list-style: disc inside;
+
+    ul {
+        list-style-type: circle;
+    }
+}
+
+ol {
+    list-style: decimal inside;
+
+    ul {
+        list-style-type: circle;
+    }
+}
+
+ul.post-list {
+  list-style: none;
+}
+
+// Inline list
+.list--inline {
+    list-style: none;
+    overflow: hidden;
+
+    > li {
+        display: block;
+        float: left;
+        margin-bottom: 0;
+        padding: 0.5rem;
+    }
+}

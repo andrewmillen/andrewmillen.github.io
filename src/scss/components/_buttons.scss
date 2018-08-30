@@ -1,0 +1,100 @@
+// Buttons
+// ------------------------
+.btn {
+	display: inline-block;
+	color: $white;
+	line-height: 1;
+	font-size: 0.875rem;
+	font-weight: 400;
+	letter-spacing: 3px;
+	text-transform: uppercase;
+	margin: 1.25rem auto;
+	padding: 1.5rem 2rem;
+	text-align: center;
+	cursor: pointer;
+	text-decoration: none;
+	background-color: $black;
+	transition: 0.3s cubic-bezier(0,.75,.25,1);
+	position: relative;
+
+	&:hover,
+	&:active,
+	&:focus {
+  	text-decoration: none;
+		color: $white;
+		background-color: $black-light;
+		border-width: 1px;
+	}
+}
+
+@include bp(m) {
+		.project-link .btn {
+				color: $black;
+				background: transparent;
+			  transition: all .3s cubic-bezier(0,.62,.36,1);
+		}
+
+		.project-link .btn:before {
+		  content: '';
+		  background: #333;
+		  height: 4px;
+		  position: absolute;
+		  bottom: 0;
+		  left: 0;
+		  right: 0;
+		  transition: all .3s cubic-bezier(.77,.38,.36,1);
+		  z-index: -1;
+		}
+
+		.project-link .btn:after {
+		  content: '';
+		  background: #333;
+		  position: absolute;
+		  bottom: 0;
+			width: 200px;
+		  height: 1px;
+		  transition: all .3s cubic-bezier(.77,.38,.36,1.4);
+		}
+
+		.project-link .btn:hover,
+		.project-link .btn:active {
+		  color: #fff;
+		}
+
+		.project-link .btn:hover:before,
+		.project-link .btn:active:before {
+		  height: 100%;
+		  transition: all .3s cubic-bezier(.77,.38,.36,1.4);
+		}
+
+		.project-link .btn:active {
+		  top: 2px;
+		}
+
+		.project-flex:nth-of-type(odd) {
+			.project-link .btn { right: 20px; }
+		  .project-link .btn:after { left: -200px; }
+			.project-link .btn:hover:after { left: 0; width: 0; }
+		}
+		.project-flex:nth-of-type(even) {
+			.project-link .btn { left: 20px; }
+		  .project-link .btn:after { right: -200px; }
+			.project-link .btn:hover:after { right: 0; width: 0; }
+		}
+}
+
+@include bp(l) {
+		.project-link .btn:after {
+			width: 400px;
+		}
+		.project-flex:nth-of-type(odd) {
+			.project-link .btn { right: 150px; }
+			.project-link .btn:after { left: -400px; }
+			.project-link .btn:hover:after { left: 0; width: 0; }
+		}
+		.project-flex:nth-of-type(even) {
+			.project-link .btn { left: 150px; }
+			.project-link .btn:after { right: -400px; }
+			.project-link .btn:hover:after { right: 0; width: 0; }
+		}
+}

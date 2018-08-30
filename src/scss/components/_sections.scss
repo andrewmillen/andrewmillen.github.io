@@ -1,0 +1,20 @@
+.section {
+}
+
+.section--spaced {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+
+    @include bp(m) {
+        padding-top: 4rem;
+        padding-bottom: 4rem;
+    }
+}
+
+.section--home--header {
+  padding-bottom: 6vw;
+}
+
+.section--home--projects {
+  padding-top: 4vw;
+}

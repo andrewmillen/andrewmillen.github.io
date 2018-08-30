@@ -1,0 +1,71 @@
+// Typography
+// ------------------------
+
+// General
+// ------------------------
+
+i,
+em {
+    font-style: italic;
+}
+
+b,
+strong {
+    font-weight: 700;
+}
+
+p {
+    font-weight: 400;
+    margin-bottom: 1rem;
+    font-size: 1rem;
+
+    @include bp(m) {
+      font-size: 1.125rem;
+    }
+
+    &:last-of-type {
+        margin-bottom: 0;
+    }
+}
+
+a {
+    color: $black;
+    text-decoration: none;
+    transition: color 0.1s ease-in-out;
+
+    &:hover {
+        color: $black;
+        text-decoration: underline;
+    }
+}
+
+small {
+  font-size: 0.88rem;
+}
+
+
+// Headings
+// ------------------------
+h1,
+h2{
+    margin: 0;
+    color: $black;
+    line-height: 1.2;
+}
+
+h1 {
+  font-size: 8vw;
+  margin-bottom: 0.675rem;
+
+  @include bp(m) {
+    font-size: 3.25rem;
+  }
+}
+
+h2 {
+  font-size: 6vw;
+
+  @include bp(l) {
+    font-size: 3.5rem;
+  }
+}
