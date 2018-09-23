@@ -1,0 +1,44 @@
+{
+  "name": "andrewmillen",
+  "version": "7.0.0",
+  "description": "Andrew Millen portfolio website",
+  "scripts": {
+    "browsersync": "browser-sync start --proxy 'https://andrewmillen.test' --files 'main.css, js/main.js, index.html, img/**/*.{png,jpg,jpeg,gif,webp,svg}'",
+    "build": "npm run js:build && npm run css:build",
+    "css:autoprefix": "postcss --use autoprefixer --use postcss-flexibility --use pixrem --replace css/main.css",
+    "css:build": "npm run css:compile && npm run css:autoprefix -- --no-map",
+    "css:compile": "node-sass --output-style compressed scss/main.scss css/main.css",
+    "dev": "npm run build && npm-run-all --parallel watch browsersync",
+    "js:build": "npm run js:vendor && npm run js:main",
+    "js:vendor": "uglifyjs js/vendor/*.js --output js/vendor.min.js",
+    "js:main": "uglifyjs js/main.js --output js/main.min.js",
+    "watch": "npm-run-all --parallel watch:*",
+    "watch:css": "chokidar 'scss/*' 'scss/**/*' -c 'npm run css:compile -- --source-map true --recursive && npm run css:autoprefix'",
+    "watch:js": "npm-run-all --parallel watch:js:*",
+    "watch:js:main": "chokidar 'js/main.js' -c 'npm run js:main'",
+    "watch:js:vendor": "chokidar 'js/vendor/*.js' -c 'npm run js:vendor'"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/andrewmillen/andrewmillen.github.io.git"
+  },
+  "author": "Andrew Millen (http://andrewmillen.com)",
+  "license": "MIT",
+  "homepage": "https://github.com/andrewmillen/andrewmillen.github.io.git#readme",
+  "devDependencies": {
+    "autoprefixer": "latest",
+    "browser-sync": "latest",
+    "chokidar-cli": "latest",
+    "node-sass": "latest",
+    "npm-run-all": "latest",
+    "pixrem": "latest",
+    "postcss-cli": "latest",
+    "postcss-flexibility": "latest",
+    "uglify-js": "latest"
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "ie > 8"
+  ]
+}
