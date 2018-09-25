@@ -1,18 +1,10 @@
-::-moz-selection {
-    background: #b3d4fc;
-    text-shadow: none;
+header,
+footer {
+  text-align: center;
+  padding: 10vmin 1rem;
 }
 
-::selection {
-    background: #b3d4fc;
-    text-shadow: none;
-}
-
-audio,
-canvas,
-iframe,
-img,
-svg,
-video {
-    vertical-align: middle;
+main {
+  text-align: center;
+  padding: 0 1rem;
 }

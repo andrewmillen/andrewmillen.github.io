@@ -3,7 +3,7 @@
   "version": "7.0.0",
   "description": "Andrew Millen portfolio website",
   "scripts": {
-    "browsersync": "browser-sync start --proxy 'https://andrewmillen.test' --files 'main.css, js/main.js, index.html, img/**/*.{png,jpg,jpeg,gif,webp,svg}'",
+    "browsersync": "browser-sync start --proxy 'http://andrewmillen.test' --files 'css/main.css, js/main.min.js, js/vendor.min.js, index.html, img/**/*.{png,jpg,jpeg,gif,webp,svg}'",
     "build": "npm run js:build && npm run css:build",
     "css:autoprefix": "postcss --use autoprefixer --use postcss-flexibility --use pixrem --replace css/main.css",
     "css:build": "npm run css:compile && npm run css:autoprefix -- --no-map",
@@ -13,7 +13,7 @@
     "js:vendor": "uglifyjs js/vendor/*.js --output js/vendor.min.js",
     "js:main": "uglifyjs js/main.js --output js/main.min.js",
     "watch": "npm-run-all --parallel watch:*",
-    "watch:css": "chokidar 'scss/*' 'scss/**/*' -c 'npm run css:compile -- --source-map true --recursive && npm run css:autoprefix'",
+    "watch:css": "chokidar 'scss/*' -c 'npm run css:compile -- --source-map true --recursive && npm run css:autoprefix'",
     "watch:js": "npm-run-all --parallel watch:js:*",
     "watch:js:main": "chokidar 'js/main.js' -c 'npm run js:main'",
     "watch:js:vendor": "chokidar 'js/vendor/*.js' -c 'npm run js:vendor'"
