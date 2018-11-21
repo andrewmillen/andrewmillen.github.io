@@ -1,0 +1,76 @@
+// =====================================
+// Header
+// =====================================
+
+header,
+footer {
+  text-align: center;
+  padding: 15vmin $grid-gutter;
+}
+
+// =====================================
+// Main
+// =====================================
+
+main {
+  text-align: center;
+  padding: 0 $grid-gutter;
+  display: block;
+
+  @include bp(l) {
+    padding: 0 $grid-gutter*3;
+  }
+}
+
+img {
+  max-width: 100%;
+  pointer-events: none;
+}
+
+section {
+  padding: 6vmin 0;
+}
+
+@include bp(l) {
+
+  .container {
+    display: flex;
+    align-items: center;
+  }
+
+  .work-sample__image,
+  .work-sample__description  {
+    width: 50%;
+  }
+
+  .work-sample__description {
+    text-align: left;
+  }
+
+  .work-sample:nth-child(even) .container {
+    flex-direction: row-reverse;
+  }
+
+}
+
+// =====================================
+// Aside
+// =====================================
+
+aside {
+  text-align: center;
+  padding: 15vmin $grid-gutter 5vmin
+}
+
+// =====================================
+// Footer
+// =====================================
+
+footer {
+  text-align: center;
+  padding: 0 $grid-gutter 15vmin;
+}
+
+footer ul {
+  margin-top: 2rem;
+}

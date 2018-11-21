@@ -1,0 +1,190 @@
+// ===============================
+// Colors
+// ===============================
+
+$black : #34363A;
+$gray : #D6D7D8;
+$silver : #F6F7F8;
+$white : #FFFFFF;
+
+// ===============================
+// Layout
+// ===============================
+
+$grid-gutter: 3rem;
+$min-width: 28.75rem;
+$max-width: 62.5rem;
+
+// ===============================
+// Functions
+// ===============================
+
+// Strip the units from a string
+@function strip-units($value) {
+    @return $value / ($value * 0 + 1);
+}
+
+// Calculate px from a rem/em value
+@function px-calc($rem, $base-val: 16) {
+    @if unit($rem) == px {
+        @return $rem;
+    }
+    @if not unitless($rem) {
+        $rem: strip-units($rem);
+    }
+    @if not unitless($base-val) {
+        $base-val: strip-units($base-val);
+    }
+    @return ($rem * $base-val) * 1px;
+}
+
+// Calculate rems from a px value
+@function rem-calc($px, $base-val: 16) {
+    @if unit($px) == rem {
+        @return $px;
+    }
+    @if not unitless($px) {
+        $px: strip-units($px);
+    }
+    @if not unitless($base-val) {
+        $base-val: strip-units($base-val);
+    }
+    @return ($px / $base-val) * 1rem;
+}
+
+// Calculate ems from a px value
+@function em-calc($px, $base-val: 16) {
+    @if unit($px) == em {
+        @return $px;
+    }
+    @if not unitless($px) {
+        $px: strip-units($px);
+    }
+    @if not unitless($base-val) {
+        $base-val: strip-units($base-val);
+    }
+    @return ($px / $base-val) * 1em;
+}
+
+// ===============================
+// Breakpoints
+// ===============================
+
+// Breakpoint map
+$breakpoints: (
+    xxs: (
+        min: rem-calc(0),
+        max: rem-calc(320)
+    ),
+    xs: (
+        min: rem-calc(321),
+        max: rem-calc(480)
+    ),
+    s: (
+        min: rem-calc(481),
+        max: rem-calc(640)
+    ),
+    m: (
+        min: rem-calc(641),
+        max: $max-width
+    ),
+    l: (
+        min: $max-width + rem-calc(1),
+        max: rem-calc(1400)
+    ),
+    xl: (
+        min: rem-calc(1401),
+        max: rem-calc(1920)
+    )
+);
+
+// Breakpoint variables
+$bp-xxs: map-get(map-get($breakpoints, xxs), max);
+$bp-xxs-min: map-get(map-get($breakpoints, xxs), min);
+$bp-xxs-max: map-get(map-get($breakpoints, xxs), max);
+$bp-xs: map-get(map-get($breakpoints, xs), max);
+$bp-xs-min: map-get(map-get($breakpoints, xs), min);
+$bp-xs-max: map-get(map-get($breakpoints, xs), max);
+$bp-s: map-get(map-get($breakpoints, s), max);
+$bp-s-min: map-get(map-get($breakpoints, s), min);
+$bp-s-max: map-get(map-get($breakpoints, s), max);
+$bp-m: map-get(map-get($breakpoints, m), max);
+$bp-m-min: map-get(map-get($breakpoints, m), min);
+$bp-m-max: map-get(map-get($breakpoints, m), max);
+$bp-l: map-get(map-get($breakpoints, l), max);
+$bp-l-min: map-get(map-get($breakpoints, l), min);
+$bp-l-max: map-get(map-get($breakpoints, l), max);
+$bp-xl: map-get(map-get($breakpoints, xl), max);
+$bp-xl-min: map-get(map-get($breakpoints, xl), min);
+$bp-xl-max: map-get(map-get($breakpoints, xl), max);
+
+// Media Queries
+$bp-media-queries: (
+    xxs-max: "(max-width: #{$bp-xxs-max})",
+    xxs-only: "(min-width: #{$bp-xxs-min}) and (max-width: #{$bp-xxs-max})",
+    xxs: "(min-width: #{$bp-xxs-min})",
+    xs-max: "(max-width: #{$bp-xs-max})",
+    xs-only: "(min-width: #{$bp-xs-min}) and (max-width: #{$bp-xs-max})",
+    xs: "(min-width: #{$bp-xs-min})",
+    s-max: "(max-width: #{$bp-s-max})",
+    s-only: "(min-width: #{$bp-s-min}) and (max-width: #{$bp-s-max})",
+    s: "(min-width: #{$bp-s-min})",
+    m-max: "(max-width: #{$bp-m-max})",
+    m-only: "(min-width: #{$bp-m-min}) and (max-width: #{$bp-m-max})",
+    m: "(min-width: #{$bp-m-min})",
+    l-max: "(max-width: #{$bp-l-max})",
+    l-only: "(min-width: #{$bp-l-min}) and (max-width: #{$bp-l-max})",
+    l: "(min-width: #{$bp-l-min})",
+    xl-max: "(max-width: #{$bp-xl-max})",
+    xl-only: "(min-width: #{$bp-xl-min}) and (max-width: #{$bp-xl-max})",
+    xl: "(min-width: #{$bp-xl-min})",
+);
+
+
+
+@mixin bp($break, $viewport1: null) {
+    // Preset breakpoint
+    @if not $viewport1 {
+        @if map-has-key($bp-media-queries, $break) {
+            @media only screen and #{map-get($bp-media-queries, $break)} { @content; }
+        }
+        @else {
+            @warn "Couldn't find a breakpoint named #{$break}.";
+        }
+    }
+    @else {
+        // min-width breakpoint
+        @if $break == min {
+            @media screen and (min-width: $viewport1) { @content; }
+        }
+        // max-width breakpoint
+        @else if $break == max {
+            @media screen and (max-width: $viewport1) { @content; }
+        }
+        // min-width & max-width breakpoint
+        @else {
+            @media screen and (min-width: $break) and (max-width: $viewport1) { @content; }
+        }
+    }
+}
+
+// ===============================
+// Responsive Font Sizing
+// ===============================
+
+// Responsive Typography
+// "min-font-size-px" + ("max-font-size" - "min-font-size") * (100vw - "min-screen-size-px") / ("max-screen-size" - "min-screen-size")
+@mixin r-font-size($min-font, $max-font, $min-screen: 0, $max-screen: $bp-xl-max) {
+    font-size: rem-calc($min-font);
+    font-size: calc(#{px-calc($min-font)} + (#{strip-units(px-calc($max-font))} - #{strip-units(px-calc($min-font))}) * (100vw - #{px-calc($min-screen)}) / (#{strip-units(px-calc($max-screen))} - #{strip-units(px-calc($min-screen))}));
+
+    @include bp(min, (rem-calc($min-screen) + rem-calc($max-screen)) / 2) {
+        font-size: (rem-calc($min-font) + rem-calc($max-font)) / 2;
+        font-size: calc(#{px-calc($min-font)} + (#{strip-units(px-calc($max-font))} - #{strip-units(px-calc($min-font))}) * (100vw - #{px-calc($min-screen)}) / (#{strip-units(px-calc($max-screen))} - #{strip-units(px-calc($min-screen))}));
+    }
+
+    @include bp(min, rem-calc($max-screen)) {
+        font-size: rem-calc($max-font);
+        font-size: calc(#{px-calc($min-font)} + (#{strip-units(px-calc($max-font))} - #{strip-units(px-calc($min-font))}) * (100vw - #{px-calc($min-screen)}) / (#{strip-units(px-calc($max-screen))} - #{strip-units(px-calc($min-screen))}));
+    }
+}
