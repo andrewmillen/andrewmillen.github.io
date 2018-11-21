@@ -1,3 +1,107 @@
 .work-sample__image a {
   display: block;
 }
+
+.work-sample__image img.large {
+
+  @include bp(l) {
+    max-width: none; // Because we want it to bleed off canvas
+    width: 800px;
+  }
+
+  @include bp(xl) {
+    width: 1000px;
+  }
+}
+
+.work-sample__image img.small {
+
+  @include bp(l) {
+    width: 400px;
+  }
+
+  @include bp(xl) {
+    width: 500px;
+  }
+}
+
+// ===================================================
+// CSS Lightbox
+// ===================================================
+
+// .modal,
+// .modal-box {
+//   z-index: 9999;
+// }
+//
+// .modal-sandbox {
+//   position: fixed;
+//   width: 100%;
+//   height: 100%;
+//   top: 0;
+//   left: 0;
+//   background: transparent;
+// }
+//
+// .modal {
+//   display: none;
+//   position: fixed;
+//   width: 100%;
+//   height: 100%;
+//   left: 0;
+//   top: 0;
+//   background: rgb(0,0,0); // Fallback
+//   background: rgba(0,0,0,.8);
+//   overflow: auto;
+// }
+//
+// .modal-box {
+//   position: relative;
+//   width: 80%;
+//   max-width: 920px;
+//   margin: 100px auto;
+// }
+//
+// .fadeIn {
+//   display: block;
+//   animation-name: fadeIn;
+//   animation-duration: 0.5s;
+//   animation-timing-function: cubic-bezier(.2,.45,.4,1);
+// }
+//
+// .fadeOut {
+//   animation-name: fadeOut;
+//   animation-duration: 0.5s;
+//   animation-timing-function: cubic-bezier(.2,.45,.4,1);
+// }
+//
+// .modal-body {
+//   background: #FFF;
+//   padding: 0.25rem;
+//
+//   @include bp(m) {
+//     padding: 0.75rem;
+//   }
+// }
+//
+// @keyframes fadeIn {
+//   0% {
+//     top: 100px;
+//     opacity: 0;
+//   }
+//   100% {
+//     top: 0;
+//     opacity: 1;
+//   }
+// }
+//
+// @keyframes fadeOut {
+//   0% {
+//     top: 0;
+//     opacity: 1;
+//   }
+//   100% {
+//     top: -100px;
+//     opacity: 0;
+//   }
+// }

@@ -86,14 +86,14 @@ $breakpoints: (
     ),
     m: (
         min: rem-calc(641),
-        max: rem-calc(1024)
-    ),
-    l: (
-        min: rem-calc(1025),
         max: $max-width
     ),
-    xl: (
+    l: (
         min: $max-width + rem-calc(1),
+        max: rem-calc(1400)
+    ),
+    xl: (
+        min: rem-calc(1401),
         max: rem-calc(1920)
     )
 );
