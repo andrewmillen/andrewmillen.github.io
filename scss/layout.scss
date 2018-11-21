@@ -5,7 +5,11 @@
 header,
 footer {
   text-align: center;
-  padding: 15vmin $grid-gutter;
+  padding: 15vmin $grid-gutter/2;
+
+  @include bp(s) {
+    padding: 15vmin $grid-gutter;
+  }
 }
 
 // =====================================
@@ -14,8 +18,12 @@ footer {
 
 main {
   text-align: center;
-  padding: 0 $grid-gutter;
+  padding: 0 $grid-gutter/2;
   display: block;
+
+  @include bp(s) {
+    padding: 0 $grid-gutter;
+  }
 
   @include bp(l) {
     padding: 0 $grid-gutter*3;
