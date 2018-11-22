@@ -4,6 +4,7 @@
 
 header,
 footer {
+  overflow-x: hidden;
   text-align: center;
   padding: 15vmin $grid-gutter/2;
 
@@ -20,6 +21,7 @@ main {
   text-align: center;
   padding: 0 $grid-gutter/2;
   display: block;
+  overflow-x: hidden;
 
   @include bp(s) {
     padding: 0 $grid-gutter;
