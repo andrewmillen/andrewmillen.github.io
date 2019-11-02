@@ -73,12 +73,33 @@ aside {
 }
 
 // =====================================
+// Article
+// =====================================
+
+article {
+  background: $silver;
+  padding: 8vmin $grid-gutter;
+  text-align: center;
+
+  img {
+    display: block;
+    width: 40px;
+    height: 40px;
+    margin: 0 auto;
+  }
+
+  h3 {
+    margin-bottom: 0;
+  }
+}
+
+// =====================================
 // Footer
 // =====================================
 
 footer {
   text-align: center;
-  padding: 0 $grid-gutter 15vmin;
+  padding: 10vmin $grid-gutter 15vmin;
 }
 
 footer ul {
